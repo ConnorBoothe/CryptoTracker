@@ -12,7 +12,7 @@ struct ContentView: View {
     //controls the ui
     var body: some View {
         VStack {
-          Header()
+//          Header()
           PostList()
         }
     }

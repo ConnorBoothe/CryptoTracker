@@ -38,7 +38,7 @@ class API {
                                  
                                  // Get value by key
                         let image_data = convertedJsonIntoDict["image"] as? NSDictionary;
-                        let thumbnail = image_data!["thumb"] as! String;
+                        let thumbnail = image_data!["large"] as! String;
                         let market_data = convertedJsonIntoDict["market_data"] as? NSDictionary
                         let currPrice = market_data!["current_price"] as? NSDictionary
                             usd_price = currPrice!["usd"] as! Double
