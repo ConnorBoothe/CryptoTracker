@@ -9,7 +9,7 @@ import Foundation
 
 struct Coin: Decodable {
     var name: String
-    var image: String
+    var image: URL
     var price: Double
     var ticker: String
     var amount: Double

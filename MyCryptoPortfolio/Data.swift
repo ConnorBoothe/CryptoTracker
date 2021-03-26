@@ -9,10 +9,11 @@ import SwiftUI
 import Foundation
 
 class API {
-    func getBitcoin( assets:KeyValuePairs<String, Double>, priceCompletionHandler: @escaping (Array<Coin>) -> Void){
+    func getAssets( assets:KeyValuePairs<String, Double>, priceCompletionHandler: @escaping (Array<Coin>) -> Void){
         //define the headers for the API request
         //api key && api host
         var coins:Array<Coin> = [];
+        //loop through assets and make API call for each asset
         for (key, value) in assets {
     
         let headers = [
@@ -43,11 +44,11 @@ class API {
                         let market_data = convertedJsonIntoDict["market_data"] as? NSDictionary
                         let currPrice = market_data!["current_price"] as? NSDictionary
                             usd_price = currPrice!["usd"] as! Double
-                        var newCoin = Coin(name: key, image: thumbnail, price: usd_price, ticker: ticker as!String, amount:value);
+                        var newCoin = Coin(name: key, image: URL(string:thumbnail)!, price: usd_price, ticker: ticker as!String, amount:value);
                         coins.append(newCoin)
-                        print(newCoin)
                         //needs to complete with an array of coin objects
                         priceCompletionHandler(coins);
+
 //                        complete(price: usd_price)
                         }
                     
@@ -61,6 +62,7 @@ class API {
         dataTask.resume()
 //        return 10.00;
      }
+       
     }
  
 }
