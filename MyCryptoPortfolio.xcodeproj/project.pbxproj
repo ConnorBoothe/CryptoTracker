@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F1A8AFDE260C60AC00E85651 /* URLImage */; };
+		F1A8AFE7260CF50600E85651 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8AFE6260CF50600E85651 /* Header.swift */; };
 		F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38D925963EE500C43F6E /* AppDelegate.swift */; };
 		F1EC38DC25963EE500C43F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38DB25963EE500C43F6E /* SceneDelegate.swift */; };
 		F1EC38DE25963EE500C43F6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38DD25963EE500C43F6E /* ContentView.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1A8AFE6260CF50600E85651 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EC38D925963EE500C43F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1EC38DB25963EE500C43F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				F1EC38E725963EE600C43F6E /* Info.plist */,
 				F1EC38E125963EE600C43F6E /* Preview Content */,
 				F1EC39162596CFB000C43F6E /* Coin.swift */,
+				F1A8AFE6260CF50600E85651 /* Header.swift */,
 			);
 			path = MyCryptoPortfolio;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				F1EC39172596CFB000C43F6E /* Coin.swift in Sources */,
 				F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */,
 				F1EC3912259650E800C43F6E /* PostList.swift in Sources */,
+				F1A8AFE7260CF50600E85651 /* Header.swift in Sources */,
 				F1EC38DC25963EE500C43F6E /* SceneDelegate.swift in Sources */,
 				F1EC38DE25963EE500C43F6E /* ContentView.swift in Sources */,
 				F1EC390D259640B500C43F6E /* Data.swift in Sources */,

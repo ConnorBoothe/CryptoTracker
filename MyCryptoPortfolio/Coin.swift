@@ -12,6 +12,7 @@ struct Coin: Decodable {
     var image: String
     var price: Double
     var ticker: String
+    var amount: Double
 }
 
 
