@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NavigationKit
 
 struct ContentView: View {
     
@@ -13,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
          Header()
-          PostList()
+          AddCoinButton()
         }
     }
 }

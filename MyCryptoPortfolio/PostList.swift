@@ -7,6 +7,7 @@
 
 import SwiftUI
 import URLImage
+import NavigationKit
 struct PostList: View {
     @State private var assets:KeyValuePairs = ["bitcoin": 0.8,
                                               "ethereum": 5.5]
@@ -20,7 +21,7 @@ struct PostList: View {
 //        }
         
             VStack {
-              
+
                 Text("$"+String(round((self.portfolio_value))))
                     .font(.system(size: 30))
                 Text("Portfolio value")
@@ -55,30 +56,33 @@ struct PostList: View {
                         .padding(20)
                         .padding(.trailing, 30)
                     }
+                    Text("Add Asset")
+                  
                 }
-               
+                Button(action: {
+                    // What to perform
+                    var _: () = API().getAssets(assets: self.assets) { coinArray in ()
+                        self.portfolio_value = 0;
+                        self.assetsArray = coinArray;
+                        for (coin) in self.assetsArray {
+                            self.portfolio_value += (coin.price * coin.amount)
+                        }
+        //                self.image = URL(string: self.assetsArray[0].image)!;
+                        
+                    };
+                }) {
+                    // How the button looks like
+                    Text("Refresh Prices")
+                        .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                        .cornerRadius(40)
+                        .font(.system(size: 16))
+                }
             }
             Spacer()
-        Button(action: {
-            // What to perform
-            var _: () = API().getAssets(assets: self.assets) { coinArray in ()
-                self.portfolio_value = 0;
-                self.assetsArray = coinArray;
-                for (coin) in self.assetsArray {
-                    self.portfolio_value += (coin.price * coin.amount)
-                }
-//                self.image = URL(string: self.assetsArray[0].image)!;
-                
-            };
-        }) {
-            // How the button looks like
-            Text("Refresh Prices")
-                .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                .cornerRadius(40)
-                .font(.system(size: 16))
-        }
+
+       
         }
        
     

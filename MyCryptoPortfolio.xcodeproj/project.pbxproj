@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1591E04260E9743002BF179 /* NavigationKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E03260E9743002BF179 /* NavigationKit */; };
+		F1591E09260E9C82002BF179 /* AddCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E08260E9C82002BF179 /* AddCoin.swift */; };
 		F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F1A8AFDE260C60AC00E85651 /* URLImage */; };
 		F1A8AFE7260CF50600E85651 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8AFE6260CF50600E85651 /* Header.swift */; };
 		F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38D925963EE500C43F6E /* AppDelegate.swift */; };
@@ -40,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1591E08260E9C82002BF179 /* AddCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoin.swift; sourceTree = "<group>"; };
 		F1A8AFE6260CF50600E85651 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EC38D925963EE500C43F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */,
+				F1591E04260E9743002BF179 /* NavigationKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,7 @@
 				F1EC38E125963EE600C43F6E /* Preview Content */,
 				F1EC39162596CFB000C43F6E /* Coin.swift */,
 				F1A8AFE6260CF50600E85651 /* Header.swift */,
+				F1591E08260E9C82002BF179 /* AddCoin.swift */,
 			);
 			path = MyCryptoPortfolio;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			name = MyCryptoPortfolio;
 			packageProductDependencies = (
 				F1A8AFDE260C60AC00E85651 /* URLImage */,
+				F1591E03260E9743002BF179 /* NavigationKit */,
 			);
 			productName = MyCryptoPortfolio;
 			productReference = F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */;
@@ -242,6 +248,7 @@
 			mainGroup = F1EC38CD25963EE400C43F6E;
 			packageReferences = (
 				F1A8AFDD260C60AC00E85651 /* XCRemoteSwiftPackageReference "url-image" */,
+				F1591E02260E9743002BF179 /* XCRemoteSwiftPackageReference "NavigationKit" */,
 			);
 			productRefGroup = F1EC38D725963EE500C43F6E /* Products */;
 			projectDirPath = "";
@@ -288,6 +295,7 @@
 			files = (
 				F1EC39172596CFB000C43F6E /* Coin.swift in Sources */,
 				F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */,
+				F1591E09260E9C82002BF179 /* AddCoin.swift in Sources */,
 				F1EC3912259650E800C43F6E /* PostList.swift in Sources */,
 				F1A8AFE7260CF50600E85651 /* Header.swift in Sources */,
 				F1EC38DC25963EE500C43F6E /* SceneDelegate.swift in Sources */,
@@ -623,6 +631,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F1591E02260E9743002BF179 /* XCRemoteSwiftPackageReference "NavigationKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/NavigationKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.10;
+			};
+		};
 		F1A8AFDD260C60AC00E85651 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -634,6 +650,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F1591E03260E9743002BF179 /* NavigationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1591E02260E9743002BF179 /* XCRemoteSwiftPackageReference "NavigationKit" */;
+			productName = NavigationKit;
+		};
 		F1A8AFDE260C60AC00E85651 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F1A8AFDD260C60AC00E85651 /* XCRemoteSwiftPackageReference "url-image" */;
