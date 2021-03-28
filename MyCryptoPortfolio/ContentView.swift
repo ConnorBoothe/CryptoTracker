@@ -9,12 +9,19 @@ import SwiftUI
 import NavigationKit
 
 struct ContentView: View {
-    
+    @State public var portfolio_value = 0.00;
+    @State public var assets_available:Array<Coin> = [];
     //controls the ui
     var body: some View {
         VStack {
-         Header()
-          AddCoinButton()
+            Text("Trying")
+            AddCoinButton(coins: self.assets_available)
+
+            var _: () = API().getMarketData() { coinArray in ()
+                print(coinArray)
+//                self.assets_available = coinArray;
+            }
+           
         }
     }
 }

@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
+import URLImage
 struct AddCoinButton: View {
-
+    var coins:Array<Coin>;
     var body: some View {
+        
         NavigationView {
             
-            NavigationLink(destination: AddCoin()){
-               
-                PostList();
+            PostList(coins: coins);
+                Spacer()
                 
-            }.buttonStyle(PlainButtonStyle())
 //            .navigationBarTitle("Add Coin", displayMode: .automatic)
         }
     }
@@ -23,32 +23,55 @@ struct AddCoinButton: View {
 
 struct AddCoin: View {
     @State private var name: String = "";
+    @State private var coinName: String = "";
+    @State private var amount: String = "";
+    @State private var floatAmount: Float = 0.00;
+    @State private var assetsArray: Array<Coin> = [];
 
     var body: some View {
-        Text("Add new asset")
-        List{
-           
-            TextField("Enter asset name", text:$name)
-                .foregroundColor(Color.black)
-                .padding(20)
-                .frame(width: 200, height:50)
-                .cornerRadius(20)
-            Text(self.name)
-            Button(action: {
-                // What to perform
-               
-    //                self.image = URL(string: self.assetsArray[0].image)!;
-                    
+        Text("Select Asset")
+            .font(.title)
+        Spacer()
+        VStack{
+            List{
                 
-            }) {
-                // How the button looks like
-                Text("Add Asset")
-                    .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .font(.system(size: 16))
+           
+            ForEach (0..<self.assetsArray.count, id: \.self)  {i in
+                HStack{
+                  
+                    URLImage(url: self.assetsArray[i].image) { image in
+                        image
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .aspectRatio(1, contentMode: .fit)
+                            
+                    }
+                    VStack(alignment: .leading) {
+                        Text(String(self.assetsArray[i].name))
+                            .font(.system(size: 16))
+                        Text(String(self.assetsArray[i].ticker)).font(.system(size: 13))
+                            .foregroundColor(Color.gray)
+                    }
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        Text("$"+String(self.assetsArray[i].price))
+                        .font(.system(size: 15))
+                        
+                    }
+                   
+                }
+                .padding(20)
+                .padding(.trailing, 30)
             }
+            }.onAppear{
+                var _: () = API().getMarketData() { coins in ()
+                    self.assetsArray = coins;
+                    
+                };
+            }
+           
+Spacer()
+            
             
         }
        

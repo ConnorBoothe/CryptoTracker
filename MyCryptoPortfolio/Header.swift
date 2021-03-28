@@ -8,20 +8,14 @@
 import SwiftUI
 
 struct Header: View {
+    var value:Double
     var body: some View {
         VStack (alignment: .leading){
-           
                 Text("Cryptfolio")
-//                Text("Connor") .font(.system(size: 14))
-            
+                Text(String(value))
             
         }.frame(width: 200).padding(5)
 
     }
 }
 
-struct Header_Previews: PreviewProvider {
-    static var previews: some View {
-        Header()
-    }
-}
