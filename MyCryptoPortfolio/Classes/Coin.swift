@@ -13,6 +13,8 @@ struct Coin: Decodable {
     var price: Double
     var ticker: String
     var amount: Double
+    var desc: String
+    
 }
 
 
