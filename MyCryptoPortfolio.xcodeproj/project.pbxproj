@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		F1591E04260E9743002BF179 /* NavigationKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E03260E9743002BF179 /* NavigationKit */; };
 		F1591E09260E9C82002BF179 /* AddCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E08260E9C82002BF179 /* AddCoin.swift */; };
+		F1591E1726113931002BF179 /* SingleCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E1626113931002BF179 /* SingleCoinView.swift */; };
+		F1591E1C261150F9002BF179 /* PurchaseCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E1B261150F9002BF179 /* PurchaseCoin.swift */; };
+		F1591E2226115431002BF179 /* CurrencyText in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E2126115431002BF179 /* CurrencyText */; };
+		F1591E2C261DFD0D002BF179 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E2B261DFD0D002BF179 /* User.swift */; };
+		F1591E35261F40A6002BF179 /* UIColor_Hex_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E34261F40A6002BF179 /* UIColor_Hex_Swift */; };
 		F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F1A8AFDE260C60AC00E85651 /* URLImage */; };
 		F1A8AFE7260CF50600E85651 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8AFE6260CF50600E85651 /* Header.swift */; };
 		F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38D925963EE500C43F6E /* AppDelegate.swift */; };
@@ -43,6 +48,9 @@
 
 /* Begin PBXFileReference section */
 		F1591E08260E9C82002BF179 /* AddCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoin.swift; sourceTree = "<group>"; };
+		F1591E1626113931002BF179 /* SingleCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCoinView.swift; sourceTree = "<group>"; };
+		F1591E1B261150F9002BF179 /* PurchaseCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCoin.swift; sourceTree = "<group>"; };
+		F1591E2B261DFD0D002BF179 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1A8AFE6260CF50600E85651 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EC38D925963EE500C43F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +78,8 @@
 			files = (
 				F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */,
 				F1591E04260E9743002BF179 /* NavigationKit in Frameworks */,
+				F1591E35261F40A6002BF179 /* UIColor_Hex_Swift in Frameworks */,
+				F1591E2226115431002BF179 /* CurrencyText in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +100,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1591E0D26113717002BF179 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC38DD25963EE500C43F6E /* ContentView.swift */,
+				F1591E08260E9C82002BF179 /* AddCoin.swift */,
+				F1A8AFE6260CF50600E85651 /* Header.swift */,
+				F1EC3911259650E800C43F6E /* PostList.swift */,
+				F1591E1626113931002BF179 /* SingleCoinView.swift */,
+				F1591E1B261150F9002BF179 /* PurchaseCoin.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1591E1126113753002BF179 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC39162596CFB000C43F6E /* Coin.swift */,
+				F1591E2B261DFD0D002BF179 /* User.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F1591E122611379C002BF179 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC390C259640B500C43F6E /* Data.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		F1EC38CD25963EE400C43F6E = {
 			isa = PBXGroup;
 			children = (
@@ -113,18 +153,15 @@
 		F1EC38D825963EE500C43F6E /* MyCryptoPortfolio */ = {
 			isa = PBXGroup;
 			children = (
+				F1591E122611379C002BF179 /* API */,
+				F1591E1126113753002BF179 /* Classes */,
+				F1591E0D26113717002BF179 /* Views */,
 				F1EC38D925963EE500C43F6E /* AppDelegate.swift */,
 				F1EC38DB25963EE500C43F6E /* SceneDelegate.swift */,
-				F1EC38DD25963EE500C43F6E /* ContentView.swift */,
-				F1EC390C259640B500C43F6E /* Data.swift */,
-				F1EC3911259650E800C43F6E /* PostList.swift */,
 				F1EC38DF25963EE600C43F6E /* Assets.xcassets */,
 				F1EC38E425963EE600C43F6E /* LaunchScreen.storyboard */,
 				F1EC38E725963EE600C43F6E /* Info.plist */,
 				F1EC38E125963EE600C43F6E /* Preview Content */,
-				F1EC39162596CFB000C43F6E /* Coin.swift */,
-				F1A8AFE6260CF50600E85651 /* Header.swift */,
-				F1591E08260E9C82002BF179 /* AddCoin.swift */,
 			);
 			path = MyCryptoPortfolio;
 			sourceTree = "<group>";
@@ -174,6 +211,8 @@
 			packageProductDependencies = (
 				F1A8AFDE260C60AC00E85651 /* URLImage */,
 				F1591E03260E9743002BF179 /* NavigationKit */,
+				F1591E2126115431002BF179 /* CurrencyText */,
+				F1591E34261F40A6002BF179 /* UIColor_Hex_Swift */,
 			);
 			productName = MyCryptoPortfolio;
 			productReference = F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */;
@@ -249,6 +288,8 @@
 			packageReferences = (
 				F1A8AFDD260C60AC00E85651 /* XCRemoteSwiftPackageReference "url-image" */,
 				F1591E02260E9743002BF179 /* XCRemoteSwiftPackageReference "NavigationKit" */,
+				F1591E2026115431002BF179 /* XCRemoteSwiftPackageReference "CurrencyText" */,
+				F1591E33261F40A6002BF179 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */,
 			);
 			productRefGroup = F1EC38D725963EE500C43F6E /* Products */;
 			projectDirPath = "";
@@ -296,9 +337,12 @@
 				F1EC39172596CFB000C43F6E /* Coin.swift in Sources */,
 				F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */,
 				F1591E09260E9C82002BF179 /* AddCoin.swift in Sources */,
+				F1591E1C261150F9002BF179 /* PurchaseCoin.swift in Sources */,
 				F1EC3912259650E800C43F6E /* PostList.swift in Sources */,
+				F1591E1726113931002BF179 /* SingleCoinView.swift in Sources */,
 				F1A8AFE7260CF50600E85651 /* Header.swift in Sources */,
 				F1EC38DC25963EE500C43F6E /* SceneDelegate.swift in Sources */,
+				F1591E2C261DFD0D002BF179 /* User.swift in Sources */,
 				F1EC38DE25963EE500C43F6E /* ContentView.swift in Sources */,
 				F1EC390D259640B500C43F6E /* Data.swift in Sources */,
 			);
@@ -639,6 +683,22 @@
 				minimumVersion = 0.4.10;
 			};
 		};
+		F1591E2026115431002BF179 /* XCRemoteSwiftPackageReference "CurrencyText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marinofelipe/CurrencyText";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.2;
+			};
+		};
+		F1591E33261F40A6002BF179 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yeahdongcn/UIColor-Hex-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		F1A8AFDD260C60AC00E85651 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -654,6 +714,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F1591E02260E9743002BF179 /* XCRemoteSwiftPackageReference "NavigationKit" */;
 			productName = NavigationKit;
+		};
+		F1591E2126115431002BF179 /* CurrencyText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1591E2026115431002BF179 /* XCRemoteSwiftPackageReference "CurrencyText" */;
+			productName = CurrencyText;
+		};
+		F1591E34261F40A6002BF179 /* UIColor_Hex_Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1591E33261F40A6002BF179 /* XCRemoteSwiftPackageReference "UIColor-Hex-Swift" */;
+			productName = UIColor_Hex_Swift;
 		};
 		F1A8AFDE260C60AC00E85651 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
