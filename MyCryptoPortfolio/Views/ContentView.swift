@@ -9,15 +9,16 @@ import SwiftUI
 import NavigationKit
 import UIColor_Hex_Swift
 struct ContentView: View {
-    @State public var assets:KeyValuePairs = ["bitcoin": 0.8,
-                                              "ethereum": 5.5,"cardano":20, "litecoin": 0.0, "polkadot": 0.0 ]
+    @State public var assets:Array<Coins> = [Coins(name:"bitcoin", amount:0.8)
+]
     @State public var assetsArray:Array<Coin> = [];
     @State public var portfolio_value = 0.00;
     @State public var assets_available:Array<Coin> = [];
     @State public var email:String = "";
     @State public var password:String = "";
-    @State public var user:User = User(first_name: "", last_name: "", email: "temp", password: "none")
+    @State public var user:User = User(first_name: "", last_name: "", email: "temp", password: "none", coins:[])
     @State var login = false
+    @State var loginStatus = true
     func handleSuccessfulLogin() {
       self.login = true
     }
@@ -54,9 +55,17 @@ struct ContentView: View {
                 API().getUser(email:self.email.lowercased(), password:self.password) { user in ()
                     self.user = user;
                     if(self.user.first_name != "") {
+                        self.assets = [];
+                        for(coin) in self.user.coins {
+                            print(coin)
+                            self.assets.append(Coins(name:coin.name, amount: coin.amount));
+                        }
                         handleSuccessfulLogin();
                         self.email = "";
                         self.password = ""
+                    }
+                    else {
+                        self.loginStatus = false;
                     }
                 }
              }) {
@@ -67,7 +76,20 @@ struct ContentView: View {
              .foregroundColor(Color.white)
              .background(Color.blue)
              .cornerRadius(20)
-             
+           
+            NavigationLink(destination: CreateAccount()){
+                Text(String("Create Account"))
+                    .padding(10)
+            }
+            if(!self.loginStatus) {
+                VStack{
+                    Text("Email or Password Incorrect")
+                }
+                .cornerRadius(60)
+                .padding(20)
+                .foregroundColor(Color.red)
+               
+            }
             Spacer()
 
             NavigationLink(destination: PostList(assets: self.$assets, assetsArray: self.$assetsArray, portfolio_value: self.$portfolio_value, user: self.$user, login:self.$login), isActive: self.$login){

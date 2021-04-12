@@ -14,6 +14,7 @@
 		F1591E2226115431002BF179 /* CurrencyText in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E2126115431002BF179 /* CurrencyText */; };
 		F1591E2C261DFD0D002BF179 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E2B261DFD0D002BF179 /* User.swift */; };
 		F1591E35261F40A6002BF179 /* UIColor_Hex_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E34261F40A6002BF179 /* UIColor_Hex_Swift */; };
+		F1591E3A262251D8002BF179 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E39262251D8002BF179 /* CreateAccount.swift */; };
 		F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F1A8AFDE260C60AC00E85651 /* URLImage */; };
 		F1A8AFE7260CF50600E85651 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8AFE6260CF50600E85651 /* Header.swift */; };
 		F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38D925963EE500C43F6E /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		F1591E1626113931002BF179 /* SingleCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCoinView.swift; sourceTree = "<group>"; };
 		F1591E1B261150F9002BF179 /* PurchaseCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCoin.swift; sourceTree = "<group>"; };
 		F1591E2B261DFD0D002BF179 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F1591E39262251D8002BF179 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		F1A8AFE6260CF50600E85651 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EC38D925963EE500C43F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F1EC3911259650E800C43F6E /* PostList.swift */,
 				F1591E1626113931002BF179 /* SingleCoinView.swift */,
 				F1591E1B261150F9002BF179 /* PurchaseCoin.swift */,
+				F1591E39262251D8002BF179 /* CreateAccount.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				F1EC3912259650E800C43F6E /* PostList.swift in Sources */,
 				F1591E1726113931002BF179 /* SingleCoinView.swift in Sources */,
 				F1A8AFE7260CF50600E85651 /* Header.swift in Sources */,
+				F1591E3A262251D8002BF179 /* CreateAccount.swift in Sources */,
 				F1EC38DC25963EE500C43F6E /* SceneDelegate.swift in Sources */,
 				F1591E2C261DFD0D002BF179 /* User.swift in Sources */,
 				F1EC38DE25963EE500C43F6E /* ContentView.swift in Sources */,
