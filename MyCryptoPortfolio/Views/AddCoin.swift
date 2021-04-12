@@ -11,8 +11,8 @@ import URLImage
 struct AddCoin: View {
     @Binding public var portfolio_value: Double;
     @Binding public var assetsArray:Array<Coin>
-    @Binding public var assets:KeyValuePairs<String, Double>
-
+    @Binding public var assets:Array<Coins>
+    @Binding public var user: User
     var body: some View {
         Text("Select Asset")
             .font(.title)
@@ -22,7 +22,8 @@ struct AddCoin: View {
                 
             ForEach (0..<self.assetsArray.count, id: \.self)  {i in
                 NavigationLink(destination: SingleCoinView(coin: self.$assetsArray[i],
-                                                           assets: self.$assets, portfolio_value: self.$portfolio_value)
+                                                           assets: self.$assets, portfolio_value: self.$portfolio_value,
+                                                           user: self.$user)
                     ){
                     HStack{
 

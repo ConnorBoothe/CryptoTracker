@@ -11,8 +11,9 @@ import URLImage
 struct SingleCoinView: View {
 //    @Binding public var assetsArray: Array<Coin>;
     @Binding public var coin:Coin;
-    @Binding public var assets:KeyValuePairs<String, Double>
+    @Binding public var assets:Array<Coins>
     @Binding public var portfolio_value: Double;
+    @Binding public var user: User;
 //    @State var showDesc:Bool = true
 
     var body: some View {
@@ -30,7 +31,7 @@ struct SingleCoinView: View {
                 .padding(10)
             Text(API().formatPrice(price:String(self.coin.price)))
                 .font(.system(size: 30))
-            NavigationLink(destination: PurchaseCoin(coin: self.$coin, portfolio_value: self.$portfolio_value)){
+            NavigationLink(destination: PurchaseCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user)){
 
                 HStack {
                     Text("Buy")

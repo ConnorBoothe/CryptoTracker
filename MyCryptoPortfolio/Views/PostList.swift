@@ -9,7 +9,7 @@ import SwiftUI
 import URLImage
 import NavigationKit
 struct PostList: View {
-    @Binding public var assets:KeyValuePairs<String, Double>
+    @Binding public var assets:Array<Coins>
     @Binding public var assetsArray:Array<Coin>;
     @Binding public var portfolio_value:Double;
     @Binding public var user:User;
@@ -27,7 +27,7 @@ struct PostList: View {
                         // What to perform
                         self.login = false;
                         self.user = User(first_name: "", last_name:"", email: "",
-                                         password: "")
+                                         password: "", coins:[Coins(name:"",amount: 0.0)])
                     }) {
                            Text("Logout")
                     }.font(.system(size: 15))
@@ -57,9 +57,6 @@ struct PostList: View {
                         self.value_string = API().formatPrice(price: String(self.portfolio_value))
                         
                     };
-                    API().getAllUsers() { user in ()
-                        self.user = user;
-                    }
                 }) {
                     // How the button looks like
                     Image(systemName: "arrow.clockwise")
@@ -70,7 +67,8 @@ struct PostList: View {
                 List {
                     ForEach (0..<self.assetsArray.count, id: \.self)  {i in
                         NavigationLink(destination: SingleCoinView(coin: self.$assetsArray[i],
-                                    assets: self.$assets, portfolio_value: self.$portfolio_value)){
+                                        assets: self.$assets, portfolio_value:
+                                            self.$portfolio_value, user: self.$user)){
                         HStack{
                             URLImage(url: self.assetsArray[i].image) { image in
                                 image
@@ -99,7 +97,7 @@ struct PostList: View {
                     }
                     }
                     NavigationLink(destination: AddCoin(portfolio_value: self.$portfolio_value,
-                                                assetsArray: self.$assetsArray, assets: self.$assets)){
+                                                        assetsArray: self.$assetsArray, assets: self.$assets, user: self.$user)){
                         Text("Add Asset")
                     }.buttonStyle(PlainButtonStyle())
 

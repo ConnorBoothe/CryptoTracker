@@ -9,8 +9,9 @@ import SwiftUI
 import CurrencyFormatter
 import URLImage
 struct PurchaseCoin: View {
-    @Binding public var coin:Coin;
-    @Binding public var portfolio_value:Double;
+    @Binding public var coin: Coin;
+    @Binding public var portfolio_value: Double;
+    @Binding public var user: User;
     @State private var FiatAmount: String = "";
 //    @ObservedObject var input = NumberOnly()
     @State private var CoinAmount: Double = 0.00000000
@@ -74,6 +75,10 @@ struct PurchaseCoin: View {
 //            print(self.FiatAmount)
           //    self.portfolio_value += Double(self.FiatAmount)!;
               self.coin.amount += Double(self.CoinAmount);
+            API().addCoin(name: self.coin.name, amount: String(self.CoinAmount), email: self.user.email){ user in ()
+                          print("Coin added")
+                print(user)
+                }
 //            print(self.portfolio_value)
            
         }) {
