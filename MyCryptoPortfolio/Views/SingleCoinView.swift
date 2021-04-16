@@ -26,7 +26,7 @@ struct SingleCoinView: View {
             Text(self.coin.name.capitalized)
                 .font(.system(size: 23))
                 .padding(10)
-            Text(API().formatPrice(price:String(self.coin.price)))
+            Text("$"+API().formatPrice(price:String(self.coin.price)))
                 .font(.system(size: 30))
           
 
