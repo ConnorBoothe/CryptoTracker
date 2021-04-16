@@ -99,7 +99,7 @@ struct PurchaseCoin: View {
                             .aspectRatio(1, contentMode: .fit)
                             
                     }
-                    Text(String(Double(round(100000000*self.CoinAmount)/100000000)))
+                    Text(String(Double(round(100000000*self.CoinAmount))/100000000))
                         .foregroundColor(Color.black)
                         .font(.system(size: 23))
                    

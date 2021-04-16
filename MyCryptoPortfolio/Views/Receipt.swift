@@ -58,18 +58,20 @@ struct Receipt: View {
                 }
                 
             }
-            Spacer()
+           
             if(self.type == "Sell") {
                 Text("\(self.CoinAmount) \(self.coin.ticker) converted to $\(self.FiatAmount)")
                     .font(.title3)
                     .padding(20)
                     .foregroundColor(Color.white)
+                    .padding(.top, 60)
             }
             else {
                 Text("$\(self.FiatAmount)  converted to \(self.CoinAmount) \(self.coin.ticker)")
                     .font(.title3)
                     .padding(20)
                     .foregroundColor(Color.white)
+                    .padding(.top, 40)
             }
             
             Button(action: {

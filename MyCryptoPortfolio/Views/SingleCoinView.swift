@@ -28,24 +28,32 @@ struct SingleCoinView: View {
                 .padding(10)
             Text("$"+API().formatPrice(price:String(self.coin.price)))
                 .font(.system(size: 30))
-          
-
                 HStack {
                     NavigationLink(destination: PurchaseCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user)){
                     Text("Buy")
-                        .padding()
+                        .padding(.leading,12)
+                        .padding(.trailing,12)
+                        .padding(.top,6)
+                        .padding(.bottom,6)
+                        
                             .background(Color.green)
                             .foregroundColor(.white)
                         .cornerRadius(20)
-                        .font(.system(size: 16))
+                        .font(.system(size: 20))
                     }
-                    NavigationLink(destination: SellCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user, assetsArray: self.$assetsArray)){
-                    Text("Sell")
-                        .padding()
-                            .background(Color.red)
-                            .foregroundColor(.white)
-                        .cornerRadius(20)
-                        .font(.system(size: 16))
+                    if(self.coin.amount > 0) {
+                        NavigationLink(destination: SellCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user, assetsArray: self.$assetsArray)){
+                        Text("Sell")
+                            .padding(.leading,12)
+                            .padding(.trailing,12)
+                            .padding(.top,6)
+                            .padding(.bottom,6)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                            .cornerRadius(20)
+                            .font(.system(size: 20))
+                    }
+                   
                         
                     }
                
