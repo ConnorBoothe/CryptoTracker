@@ -10,9 +10,10 @@ import URLImage
 
 struct AddCoin: View {
     @Binding public var portfolio_value: Double;
-    @Binding public var assetsArray:Array<Coin>
-    @Binding public var assets:Array<Coins>
     @Binding public var user: User
+    @Binding public var coins_supported:Array<String>
+    @Binding public var coins_available: Array<Coin>
+    @Binding public var assetsArray: Array<Coin>
     var body: some View {
         Text("Select Asset")
             .font(.title)
@@ -20,14 +21,14 @@ struct AddCoin: View {
         VStack{
             List{
                 
-            ForEach (0..<self.assetsArray.count, id: \.self)  {i in
-                NavigationLink(destination: SingleCoinView(coin: self.$assetsArray[i],
-                                                           assets: self.$assets, portfolio_value: self.$portfolio_value,
-                                                           user: self.$user)
+            ForEach (0..<self.coins_available.count, id: \.self)  {i in
+                NavigationLink(destination: SingleCoinView(coin: self.$coins_available[i],
+                                                           portfolio_value: self.$portfolio_value,
+                                                           user: self.$user, assetsArray: self.$assetsArray)
                     ){
                     HStack{
 
-                        URLImage(url: self.assetsArray[i].image) { image in
+                        URLImage(url: self.coins_available[i].image) { image in
                             image
                                 .resizable()
                                 .frame(width: 50, height: 50)
@@ -35,14 +36,14 @@ struct AddCoin: View {
 
                         }
                         VStack(alignment: .leading) {
-                            Text(String(self.assetsArray[i].name))
+                            Text(String(self.coins_available[i].name))
                                 .font(.system(size: 16))
-                            Text(String(self.assetsArray[i].ticker)).font(.system(size: 13))
+                            Text(String(self.coins_available[i].ticker)).font(.system(size: 13))
                                 .foregroundColor(Color.gray)
                         }
                         Spacer()
                         VStack(alignment: .leading) {
-                            Text("$"+API().formatPrice(price:String(self.assetsArray[i].price)))
+                            Text("$"+API().formatPrice(price:String(self.coins_available[i].price)))
                                 .font(.system(size: 13))
                                 .foregroundColor(Color.gray)
 
@@ -54,8 +55,10 @@ struct AddCoin: View {
                    }
                 }
             }.onAppear{
-                var _: () = API().getMarketData(assets:self.assets) { coins in ()
-                    self.assetsArray = coins;
+                print(self.coins_supported)
+                var _: () = API().getMarketData(assets:self.coins_supported) { coins in ()
+                    self.coins_available = coins;
+                    print(self.coins_available[3])
                 };
             }
            

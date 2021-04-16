@@ -9,16 +9,15 @@ import SwiftUI
 import URLImage
 import NavigationKit
 struct PostList: View {
-    @Binding public var assets:Array<Coins>
-    @Binding public var assetsArray:Array<Coin>;
+    @State public var assetsArray:Array<Coin> = [];
     @Binding public var portfolio_value:Double;
     @Binding public var user:User;
     @Binding public var login:Bool;
-    @State public var value_string:String = "";
+    @Binding public var coins_supported:Array<String>;
+    @Binding public var coins_available:Array<Coin>;
 
+    @State public var value_string:String = "";
     var body: some View {
-        
-       
             VStack {
                 HStack{
                     Text(String(self.user.first_name) + " " + String(self.user.last_name))
@@ -47,7 +46,7 @@ struct PostList: View {
                 Spacer()
                 Button(action: {
                     // What to perform
-                    var _: () = API().getAssets(assets: self.assets) { coinArray in ()
+                    var _: () = API().getAssets(assets: self.user.coins) { coinArray in ()
                         self.portfolio_value = 0;
                         self.assetsArray = coinArray;
                         for (coin) in self.assetsArray {
@@ -58,7 +57,6 @@ struct PostList: View {
                         
                     };
                 }) {
-                    // How the button looks like
                     Image(systemName: "arrow.clockwise")
                         .font(.system(size: 20))
                         .foregroundColor(Color.gray)
@@ -67,8 +65,9 @@ struct PostList: View {
                 List {
                     ForEach (0..<self.assetsArray.count, id: \.self)  {i in
                         NavigationLink(destination: SingleCoinView(coin: self.$assetsArray[i],
-                                        assets: self.$assets, portfolio_value:
-                                            self.$portfolio_value, user: self.$user)){
+                                       portfolio_value:
+                                        self.$portfolio_value, user: self.$user,
+                                       assetsArray: self.$assetsArray)){
                         HStack{
                             URLImage(url: self.assetsArray[i].image) { image in
                                 image
@@ -97,13 +96,15 @@ struct PostList: View {
                     }
                     }
                     NavigationLink(destination: AddCoin(portfolio_value: self.$portfolio_value,
-                                                        assetsArray: self.$assetsArray, assets: self.$assets, user: self.$user)){
+                                                        user: self.$user, coins_supported: self.$coins_supported, coins_available: self.$coins_available, assetsArray: self.$assetsArray)){
                         Text("Add Asset")
-                    }.buttonStyle(PlainButtonStyle())
+                    }
+                    .buttonStyle(PlainButtonStyle())
 
                   
                 }.onAppear{
-                    var _: () = API().getAssets(assets: self.assets) { coinArray in ()
+                    print(self.user.coins)
+                    var _: () = API().getAssets(assets: self.user.coins) { coinArray in ()
                         self.portfolio_value = 0;
                         self.assetsArray = coinArray;
                         for (coin) in self.assetsArray {
@@ -115,7 +116,7 @@ struct PostList: View {
                 }
                 Spacer()
                
-            }   .navigationBarTitle("Back")
+            }   .navigationBarTitle("Home")
             .navigationBarHidden(true)
      
        
