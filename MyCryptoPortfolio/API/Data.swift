@@ -134,6 +134,9 @@ class API {
             } else {
                 do {
                     if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data!, options: []) as? Array<Any> {
+                        if(convertedJsonIntoDict.count > 0) {
+                            
+                      
                         var user = convertedJsonIntoDict[0] as? NSDictionary;
 //                        var first_name = user.first_name;
                         let first_name = user!["first_name"]! as? String
@@ -149,17 +152,24 @@ class API {
                         }
                         var newUser = User(first_name: first_name!, last_name: last_name!, email: email!, password: password!, coins:coin_array)
                         completionHandler(newUser)
-                        
+                        }
+                        else{
+                            var newUser = User(first_name: "", last_name: "", email: "", password: "", coins:[Coins(name:"coin",amount:0.0)])
+                            completionHandler(newUser)
+                            print("something fucked up. its nil. why lord")
+                        }
                         }
                     else{
                         var newUser = User(first_name: "", last_name: "", email: "", password: "", coins:[Coins(name:"coin",amount:0.0)])
                         completionHandler(newUser)
                         print("something fucked up. its nil. why lord")
                     }
+                    
                 }
                 catch {
                     print(error)
                 }
+                
             }
         })
         dataTask.resume()
