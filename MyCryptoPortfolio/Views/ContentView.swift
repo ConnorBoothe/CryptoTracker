@@ -8,10 +8,14 @@
 import SwiftUI
 import NavigationKit
 import UIColor_Hex_Swift
+class Views: ObservableObject {
+    @Published var stacked = false
+}
 struct ContentView: View {
+    
+    @ObservedObject var views = Views()
     @State public var assets:Array<Coins> = [Coins(name:"bitcoin", amount:0.8)
 ]
-    @State public var assetsArray:Array<Coin> = [];
     @State public var portfolio_value = 0.00;
     @State public var assets_available:Array<Coin> = [];
     @State public var email:String = "";
@@ -19,6 +23,8 @@ struct ContentView: View {
     @State public var user:User = User(first_name: "", last_name: "", email: "temp", password: "none", coins:[])
     @State var login = false
     @State var loginStatus = true
+    @State var coins_supported = ["bitcoin", "ethereum", "litecoin", "dogecoin", "cardano","chainlink"]
+    @State public var coins_available:Array<Coin> = []
     func handleSuccessfulLogin() {
       self.login = true
     }
@@ -55,11 +61,6 @@ struct ContentView: View {
                 API().getUser(email:self.email.lowercased(), password:self.password) { user in ()
                     self.user = user;
                     if(self.user.first_name != "") {
-                        self.assets = [];
-                        for(coin) in self.user.coins {
-                            print(coin)
-                            self.assets.append(Coins(name:coin.name, amount: coin.amount));
-                        }
                         handleSuccessfulLogin();
                         self.email = "";
                         self.password = ""
@@ -92,13 +93,15 @@ struct ContentView: View {
             }
             Spacer()
 
-            NavigationLink(destination: PostList(assets: self.$assets, assetsArray: self.$assetsArray, portfolio_value: self.$portfolio_value, user: self.$user, login:self.$login), isActive: self.$login){
+            NavigationLink(destination: PostList(portfolio_value: self.$portfolio_value, user: self.$user, login:self.$login, coins_supported: self.$coins_supported, coins_available: self.$coins_available), isActive: self.$login){
                 Text(String(self.login))
             }.hidden()
+            
 Spacer()
         }
         .frame(width: 400)
     }
+        .environmentObject(views)
         .navigationBarTitle("")
                .navigationBarHidden(true)
 
