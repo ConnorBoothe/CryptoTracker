@@ -6,43 +6,50 @@
 //
 
 import SwiftUI
-import CurrencyFormatter
 import URLImage
 struct PurchaseCoin: View {
     @Binding public var coin: Coin;
     @Binding public var portfolio_value: Double;
     @Binding public var user: User;
-    @State private var FiatAmount: String = "";
+    @State private var FiatAmount: String = "0.00";
 //    @ObservedObject var input = NumberOnly()
     @State private var CoinAmount: Double = 0.00000000
+    @State private var PurchaseComplete:Bool = false
+    @State public var type:String = "Buy";
 //   @State public var portfolio_value:Double;
 
     var body: some View {
-//        Text(String(portfolio_value))
-        Text("Purchase \(coin.name)")
-            .font(.title)
-        Text(" \(coin.amount)")
-            .font(.title)
-        HStack {
-            Image(systemName: "dollarsign.circle.fill")
-                .font(.system(size: 40))
-                .foregroundColor(Color.gray)
-            let formatter = CurrencyFormatter {
-                $0.currency = .dollar
-                  $0.locale = CurrencyLocale.englishUnitedStates
+        ZStack{
+            
+    
+        VStack{
+            VStack{
+                Text("\(coin.amount)")
+                    .font(.system(size: 20))
+                Text("\(coin.ticker) balance")
+                    .foregroundColor(Color.gray)
+                        .font(.system(size: 15))
             }
-            let formattedString = formatter.string(from:30.00) //€30.00
-            TextField("0.00", text: $FiatAmount)
-                .keyboardType(.decimalPad)
-                .font(.system(size: 40))
-                .frame(width: 200)
-                .foregroundColor(Color.gray)
+            .padding(20)
+           
+           
+            VStack{
+                HStack {
+                    Text("$")
+                    TextField("0.00", text: $FiatAmount)
+                        .disabled(true)
+                        .fixedSize()
+                        
 
-        }
-        .padding(50)
+                }
+               
+                .padding(1)
+                .multilineTextAlignment(.leading)
+        .frame(maxWidth: .infinity)
+        .font(.system(size: 40))
+        .foregroundColor(Color.blue)
         .onChange(of: FiatAmount) { newValue in
                         print("Changed fiat amount")
-            
             print( Double(FiatAmount) ?? 0)
             if(self.FiatAmount != ""){
                 self.CoinAmount = Double(self.FiatAmount)! * (1/coin.price);
@@ -53,44 +60,67 @@ struct PurchaseCoin: View {
            
            
             }
-   
-        HStack {
-            URLImage(url: coin.image) { image in
-                image
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .aspectRatio(1, contentMode: .fit)
-                    
-            }
-            Text(String(self.CoinAmount))
-                .foregroundColor(Color.black)
-                .font(.system(size: 23))
-           
-
-
-        }.padding(50)
-      
-        Button(action: {
-            // purchase logic goes here
-//            print(self.FiatAmount)
-          //    self.portfolio_value += Double(self.FiatAmount)!;
-              self.coin.amount += Double(self.CoinAmount);
-            API().addCoin(name: self.coin.name, amount: String(self.CoinAmount), email: self.user.email){ user in ()
-                          print("Coin added")
-                print(user)
+                Text("Max $100,000")
+                    .font(.system(size: 14))
+                PricePad(FiatAmount: self.$FiatAmount)
+                
+                
+                Button(action: {
+                    if(Double(self.FiatAmount)! >= 10) {
+                       
+                        API().addCoin(name: self.coin.name, amount: String(self.CoinAmount), email: self.user.email){ coins in ()
+                                self.user.coins = coins;
+                                self.PurchaseComplete = true;
+//                                self.FiatAmount = "0";
+                                self.coin.amount += Double(self.CoinAmount);
+                                print("Coin added")
+                            }
+                    }
+                }) {
+                    // How the button looks like
+                    Text("Purchase \(coin.ticker)")
+                        .padding()
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                        .cornerRadius(40)
+                        .font(.system(size: 16))
                 }
-//            print(self.portfolio_value)
-           
-        }) {
-            // How the button looks like
-            Text("Confirm Purchase")
-                .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                .cornerRadius(40)
-                .font(.system(size: 16))
+                .sheet(isPresented: $PurchaseComplete, onDismiss: {
+                            print(self.PurchaseComplete)
+                        }) {
+                    Receipt(coin: self.$coin, CoinAmount: self.$CoinAmount, FiatAmount: self.$FiatAmount, type: self.$type)
+                        }
+            if(Double(self.FiatAmount)! >= 10) {
+                HStack {
+                    URLImage(url: coin.image) { image in
+                        image
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .aspectRatio(1, contentMode: .fit)
+                            
+                    }
+                    Text(String(Double(round(100000000*self.CoinAmount)/100000000)))
+                        .foregroundColor(Color.black)
+                        .font(.system(size: 23))
+                   
+
+
+                }.padding(20)
+            }
+            else {
+                HStack {
+                    Text("$10 minimum purchase")
+                        .foregroundColor(Color.red)
+                        .font(.system(size: 14))
+                   
+
+
+                }.padding(20)
+            }
         }
         Spacer()
+        }
+    }
     }
 }
 
