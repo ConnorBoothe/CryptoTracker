@@ -9,13 +9,10 @@ import SwiftUI
 import URLImage
 
 struct SingleCoinView: View {
-//    @Binding public var assetsArray: Array<Coin>;
     @Binding public var coin:Coin;
-    @Binding public var assets:Array<Coins>
     @Binding public var portfolio_value: Double;
     @Binding public var user: User;
-//    @State var showDesc:Bool = true
-
+    @Binding public var assetsArray: Array<Coin>
     var body: some View {
         Spacer()
         VStack {
@@ -31,22 +28,26 @@ struct SingleCoinView: View {
                 .padding(10)
             Text(API().formatPrice(price:String(self.coin.price)))
                 .font(.system(size: 30))
-            NavigationLink(destination: PurchaseCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user)){
+          
 
                 HStack {
+                    NavigationLink(destination: PurchaseCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user)){
                     Text("Buy")
                         .padding()
                             .background(Color.green)
                             .foregroundColor(.white)
-                        .cornerRadius(40)
+                        .cornerRadius(20)
                         .font(.system(size: 16))
+                    }
+                    NavigationLink(destination: SellCoin(coin: self.$coin, portfolio_value: self.$portfolio_value, user: self.$user, assetsArray: self.$assetsArray)){
                     Text("Sell")
                         .padding()
                             .background(Color.red)
                             .foregroundColor(.white)
-                        .cornerRadius(40)
+                        .cornerRadius(20)
                         .font(.system(size: 16))
-                }
+                        
+                    }
                
 
             }
