@@ -92,7 +92,7 @@ class API {
                             let market_data = convertedJsonIntoDict["market_data"] as? NSDictionary
                             let currPrice = market_data!["current_price"] as? NSDictionary
                                 usd_price = currPrice!["usd"] as! Double
-                        var newCoin = Coin(name: coin_name as! String, image: URL(string:thumbnail)!, price: usd_price, ticker: ticker as!String, amount:0.00, desc: simple_desc);
+                        let newCoin = Coin(name: coin_name as! String, image: URL(string:thumbnail)!, price: usd_price, ticker: ticker as!String, amount:0.00, desc: simple_desc);
                             coins.append(newCoin)
                             //needs to complete with an array of coin objects
                         if(coins.count == assets.count) {
@@ -119,8 +119,6 @@ class API {
               index-=3;
                 //add comma at index
                 priceArray.insert(",", at: index);
-                //decrement index again to account for newly insert comma
-                index-=1;
             }
         return String(priceArray);
     }
@@ -209,7 +207,6 @@ class API {
             "amount": amount,
             "email":email
         ];
-        let valid = JSONSerialization.isValidJSONObject(params)
 
         let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8080/API/AddCoin")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
@@ -253,7 +250,6 @@ class API {
             "email":email
         ];
         let valid = JSONSerialization.isValidJSONObject(params)
-        print(valid)
         let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8080/API/SellCoin")! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
@@ -278,7 +274,6 @@ class API {
                     }
                     completionHandler(new_coin_array)
                     }
-
                 }
                 catch {
                     print("error here")
