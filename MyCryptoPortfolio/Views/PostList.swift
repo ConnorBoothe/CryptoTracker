@@ -53,8 +53,7 @@ struct PostList: View {
                             self.portfolio_value += (coin.price * coin.amount)
                             
                         }
-                        self.value_string = API().formatPrice(price: String(self.portfolio_value))
-                        
+                        self.value_string = API().formatPrice(price: String(round(100 * self.portfolio_value)/100))
                     };
                 }) {
                     Image(systemName: "arrow.clockwise")
@@ -81,14 +80,16 @@ struct PostList: View {
                                     .font(.system(size: 16))
                                 Text(String(self.assetsArray[i].ticker)).font(.system(size: 13))
                                     .foregroundColor(Color.gray)
+                                    
                             }
                             Spacer()
-                            VStack(alignment: .leading) {
+                            VStack(alignment: .trailing) {
                                 Text("$"+API().formatPrice(price:String(self.assetsArray[i].price)))
                                 .font(.system(size: 15))
                                 Text(String(self.assetsArray[i].amount)).foregroundColor(Color.gray)
                                     .font(.system(size: 13))
                             }
+                            .padding(.leading, 30)
                            
                         }
                         .padding(20)
@@ -103,14 +104,14 @@ struct PostList: View {
 
                   
                 }.onAppear{
-                    print(self.user.coins)
+                    
                     var _: () = API().getAssets(assets: self.user.coins) { coinArray in ()
                         self.portfolio_value = 0;
                         self.assetsArray = coinArray;
                         for (coin) in self.assetsArray {
-                            self.portfolio_value += (coin.price * coin.amount)
+                            self.portfolio_value +=  (coin.price * coin.amount)
                         }
-                    self.value_string = API().formatPrice(price: String(self.portfolio_value))
+                    self.value_string = API().formatPrice(price: String(round(100 * self.portfolio_value)/100))
                         
                     };
                 }
