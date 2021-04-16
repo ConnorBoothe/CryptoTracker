@@ -42,7 +42,7 @@ class API {
                             let currPrice = market_data!["current_price"] as? NSDictionary
                                 usd_price = currPrice!["usd"] as! Double
                         print(usd_price)
-
+//                        portfolio_value = usd_price
                         let newCoin = Coin(name: coin_name as! String, image: URL(string:thumbnail)!, price: usd_price, ticker: ticker as!String, amount:round(100000000*coin.amount)/100000000, desc: simple_desc);
                             coins.append(newCoin)
                         if(coins.count  == assets.count){

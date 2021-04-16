@@ -47,12 +47,14 @@ struct PostList: View {
                 Button(action: {
                     // What to perform
                     var _: () = API().getAssets(assets: self.user.coins) { coinArray in ()
-                        self.portfolio_value = 0;
+                
                         self.assetsArray = coinArray;
-                        for (coin) in self.assetsArray {
-                            self.portfolio_value += (coin.price * coin.amount)
-                            
+                        var new_portfolio_value:Double = 0.00;
+                        for (coin) in coinArray {
+                            new_portfolio_value += (coin.price * coin.amount)
+
                         }
+                        self.portfolio_value = new_portfolio_value;
                         self.value_string = API().formatPrice(price: String(round(100 * self.portfolio_value)/100))
                     };
                 }) {
@@ -106,12 +108,14 @@ struct PostList: View {
                 }.onAppear{
                     
                     var _: () = API().getAssets(assets: self.user.coins) { coinArray in ()
-                        self.portfolio_value = 0;
                         self.assetsArray = coinArray;
-                        for (coin) in self.assetsArray {
-                            self.portfolio_value +=  (coin.price * coin.amount)
+                        var new_portfolio_value:Double = 0.00;
+                        for (coin) in coinArray {
+                            new_portfolio_value += (coin.price * coin.amount)
+
                         }
-                    self.value_string = API().formatPrice(price: String(round(100 * self.portfolio_value)/100))
+                        self.portfolio_value = new_portfolio_value;
+                        self.value_string = API().formatPrice(price: String(round(100 * self.portfolio_value)/100))
                         
                     };
                 }
