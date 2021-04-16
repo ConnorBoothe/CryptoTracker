@@ -15,6 +15,9 @@
 		F1591E2C261DFD0D002BF179 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E2B261DFD0D002BF179 /* User.swift */; };
 		F1591E35261F40A6002BF179 /* UIColor_Hex_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = F1591E34261F40A6002BF179 /* UIColor_Hex_Swift */; };
 		F1591E3A262251D8002BF179 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1591E39262251D8002BF179 /* CreateAccount.swift */; };
+		F180AA2226260A34001F5E67 /* PricePad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180AA2126260A34001F5E67 /* PricePad.swift */; };
+		F180AA2726289641001F5E67 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180AA2626289640001F5E67 /* Receipt.swift */; };
+		F180AA2C262914E4001F5E67 /* SellCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F180AA2B262914E4001F5E67 /* SellCoin.swift */; };
 		F1A8AFDF260C60AC00E85651 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F1A8AFDE260C60AC00E85651 /* URLImage */; };
 		F1A8AFE7260CF50600E85651 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8AFE6260CF50600E85651 /* Header.swift */; };
 		F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC38D925963EE500C43F6E /* AppDelegate.swift */; };
@@ -53,6 +56,9 @@
 		F1591E1B261150F9002BF179 /* PurchaseCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCoin.swift; sourceTree = "<group>"; };
 		F1591E2B261DFD0D002BF179 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F1591E39262251D8002BF179 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		F180AA2126260A34001F5E67 /* PricePad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricePad.swift; sourceTree = "<group>"; };
+		F180AA2626289640001F5E67 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		F180AA2B262914E4001F5E67 /* SellCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellCoin.swift; sourceTree = "<group>"; };
 		F1A8AFE6260CF50600E85651 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		F1EC38D625963EE500C43F6E /* MyCryptoPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCryptoPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EC38D925963EE500C43F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 				F1591E1626113931002BF179 /* SingleCoinView.swift */,
 				F1591E1B261150F9002BF179 /* PurchaseCoin.swift */,
 				F1591E39262251D8002BF179 /* CreateAccount.swift */,
+				F180AA2126260A34001F5E67 /* PricePad.swift */,
+				F180AA2626289640001F5E67 /* Receipt.swift */,
+				F180AA2B262914E4001F5E67 /* SellCoin.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,13 +348,16 @@
 			files = (
 				F1EC39172596CFB000C43F6E /* Coin.swift in Sources */,
 				F1EC38DA25963EE500C43F6E /* AppDelegate.swift in Sources */,
+				F180AA2726289641001F5E67 /* Receipt.swift in Sources */,
 				F1591E09260E9C82002BF179 /* AddCoin.swift in Sources */,
 				F1591E1C261150F9002BF179 /* PurchaseCoin.swift in Sources */,
+				F180AA2C262914E4001F5E67 /* SellCoin.swift in Sources */,
 				F1EC3912259650E800C43F6E /* PostList.swift in Sources */,
 				F1591E1726113931002BF179 /* SingleCoinView.swift in Sources */,
 				F1A8AFE7260CF50600E85651 /* Header.swift in Sources */,
 				F1591E3A262251D8002BF179 /* CreateAccount.swift in Sources */,
 				F1EC38DC25963EE500C43F6E /* SceneDelegate.swift in Sources */,
+				F180AA2226260A34001F5E67 /* PricePad.swift in Sources */,
 				F1591E2C261DFD0D002BF179 /* User.swift in Sources */,
 				F1EC38DE25963EE500C43F6E /* ContentView.swift in Sources */,
 				F1EC390D259640B500C43F6E /* Data.swift in Sources */,
